@@ -3,5 +3,7 @@
     <string name="email">Email</string>
     <string name="text">Text</string>
     <string name="theme">Theme</string>
-    <string name="massage">Massage</string>
+    <string name="Message">Massage</string>
+    <string name="message">Message</string>
+    <string name="send">Send</string>
 </resources>

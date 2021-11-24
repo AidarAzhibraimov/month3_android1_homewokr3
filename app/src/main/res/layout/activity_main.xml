@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     tools:context=".MainActivity">
 
 
@@ -11,10 +12,12 @@
         android:id="@+id/iv_email"
         android:layout_width="220dp"
         android:layout_height="220dp"
+        android:layout_marginTop="16dp"
         android:src="@drawable/email"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
 
 
     <EditText
@@ -22,54 +25,59 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
-        android:background="@drawable/radius"
         android:drawableStart="@drawable/ic_baseline_email_24"
         android:padding="16dp"
+        android:maxLines="1"
+        android:layout_marginTop="48dp"
         android:hint="@string/email"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_email" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_email"
+        tools:ignore="Autofill,TextFields" />
 
     <EditText
         android:id="@+id/et_theme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/radius"
         android:drawableStart="@drawable/ic_baseline_short_text_24"
         android:hint="@string/theme"
+        android:maxLines="1"
         android:textSize="24sp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:padding="16dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/et_email"/>
+        app:layout_constraintTop_toBottomOf="@+id/et_email"
+        tools:ignore="Autofill,TextFields" />
 
 
     <EditText
-        android:id="@+id/et_massage"
+        android:id="@+id/et_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/radius"
         android:drawableStart="@drawable/ic_baseline_textsms_24"
-        android:hint= "@string/massage"
+        android:hint="@string/message"
         android:textSize="24sp"
-        android:textColor="@color/white"
+        android:maxLines="1"
+        android:textColor="@color/black"
         android:padding="16dp"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/et_theme"/>
+        app:layout_constraintTop_toBottomOf="@+id/et_theme"
+        tools:ignore="Autofill,TextFields" />
 
     <Button
         android:id="@+id/btn_send"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Send"
-        android:background="@color/yellow"
+        android:text="@string/send"
         android:layout_marginHorizontal="16dp"
+        android:padding="24dp"
+        android:background="@drawable/radius"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@+id/et_massage"/>
+        app:layout_constraintTop_toBottomOf="@+id/et_message"/>
 
 
 

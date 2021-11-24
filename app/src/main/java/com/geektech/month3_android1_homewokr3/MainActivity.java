@@ -4,10 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -22,7 +23,7 @@ private Button send;
         imageView = findViewById(R.id.iv_email);
         email = findViewById(R.id.et_email);
         theme = findViewById(R.id.et_theme);
-        massage = findViewById(R.id.et_massage);
+        massage = findViewById(R.id.et_message);
         send = findViewById(R.id.btn_send);
         String Uri = "https://vectorified.com/images/small-email-icon-12.png";
         Glide.with(MainActivity.this).load(Uri).into(imageView);
@@ -30,15 +31,26 @@ private Button send;
     }
 
     private void initListeners() {
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email.getText().toString()});
-                intent.putExtra(Intent.EXTRA_SUBJECT,theme.getText().toString());
-                intent.putExtra(Intent.EXTRA_TEXT,massage.getText().toString());
-                intent.setType("massage/rfc822");
-                startActivity(Intent.createChooser(intent,"Choose an Email client:"));
+        send.setOnClickListener(v -> {
+            Log.d("ololo",email.getText().toString());
+
+            final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
+            emailIntent.setType("text/plain");
+            emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{
+                    email.getText().toString()
+            });
+            emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, theme.getText().toString());
+            emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, massage.getText().toString());
+
+            emailIntent.setType("message/rfc822");
+
+            try {
+                startActivity(Intent.createChooser(emailIntent,
+                        "Send email using..."));
+            } catch (android.content.ActivityNotFoundException ex) {
+                Toast.makeText(this,
+                        "No email clients installed.",
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
